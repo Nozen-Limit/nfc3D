@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Italiana&family=Outfit:wght@300;400;500&display=swap');
+html,body,#root{margin:0;min-height:100%;background:#080a0d}body{font-family:Outfit,Arial,sans-serif}button,a{-webkit-tap-highlight-color:transparent}
+
+
+#signature-card-dissolve{width:100%;max-width:390px;margin:12px auto;background:#080a0d;color:#eee3d1;font-family:'Outfit',Arial,sans-serif;border-radius:28px;overflow:hidden;text-align:left;color-scheme:dark;box-shadow:0 20px 70px #0003}
+#signature-card-dissolve *{box-sizing:border-box}
+#signature-card-dissolve button,#signature-card-dissolve a{font:inherit;color:inherit}
+#signature-card-dissolve [hidden]{display:none!important}
+#signature-card-dissolve .ns-header,#signature-card-dissolve .ns-topline,#signature-card-dissolve .ns-eyebrow,#signature-card-dissolve .ns-footer,#signature-card-dissolve .ns-bottom,#signature-card-dissolve .ns-story-bars,#signature-card-dissolve .ns-finish-control,#signature-card-dissolve .ns-work{display:none!important}
+#signature-card-dissolve .ns-scroller{position:relative;height:740px;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+#signature-card-dissolve .ns-scroller::-webkit-scrollbar{display:none}
+#signature-card-dissolve .ns-stage{position:sticky;top:0;height:740px;isolation:isolate;overflow:hidden;background:#080a0d}
+#signature-card-dissolve .ns-stage,#signature-card-dissolve .ns-stage *{-webkit-user-select:none!important;user-select:none!important;-webkit-touch-callout:none}
+#signature-card-dissolve .ns-stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:pan-y;cursor:grab;z-index:0}
+#signature-card-dissolve .ns-stage.is-rotating,#signature-card-dissolve .ns-stage.is-rotating *{cursor:grabbing!important}
+#signature-card-dissolve .ns-card-hit{position:absolute;touch-action:none;z-index:2;cursor:grab;-webkit-user-drag:none}
+#signature-card-dissolve .ns-track{height:4000px;margin-top:-740px;pointer-events:none}
+#signature-card-dissolve .ns-grid{position:absolute;inset:32px 25px;display:flex;justify-content:space-between;opacity:.35;pointer-events:none}
+#signature-card-dissolve .ns-grid span{width:1px;background:#ffffff09}
+#signature-card-dissolve .ns-copy{position:absolute;top:430px;left:28px;right:28px;z-index:3;pointer-events:none;perspective:700px}
+#signature-card-dissolve h1{font:400 53px/1.04 'Italiana',Georgia,serif;letter-spacing:-1px;margin:0 0 20px;color:#ead7b5}
+#signature-card-dissolve .ns-desc{font:400 16px/1.5 'Outfit',Arial,sans-serif;color:#bcb9b2;margin:0;max-width:310px}
+#signature-card-dissolve .ns-copy.intro h1,#signature-card-dissolve .ns-copy.intro .ns-desc,#signature-card-dissolve .ns-copy.connect .ns-desc{visibility:hidden}
+#signature-card-dissolve .ns-copy.intro .ns-desc{width:290px;height:28px}
+#signature-card-dissolve .ns-copy.connect h1{font-size:46px;margin-bottom:12px}
+#signature-card-dissolve .ns-copy.connect .ns-desc{width:280px;height:34px}
+#signature-card-dissolve .ns-copy.socials h1{font-size:44px;margin-bottom:10px}
+#signature-card-dissolve .ns-copy.socials .ns-desc{font-size:13px;color:#b3aea5}
+#signature-card-dissolve .ns-socials{display:none;grid-template-columns:1fr 1fr;gap:9px;margin-top:20px;pointer-events:auto;transform:translateY(var(--social-y,0px)) rotateX(var(--social-tilt,0deg));opacity:var(--social-opacity,1);transform-origin:center top}
+#signature-card-dissolve .socials .ns-socials{display:grid}
+#signature-card-dissolve .ns-socials button{display:flex;align-items:center;justify-content:space-between;gap:5px;min-height:49px;padding:12px 13px;border:1px solid #d7c4a225;border-radius:12px;background:#ffffff05;text-align:left;font-size:14px}
+#signature-card-dissolve .ns-socials button span{font-size:11px;color:#a49e93}
+#signature-card-dissolve .ns-actions{display:none;gap:10px;flex-wrap:wrap;margin-top:17px;pointer-events:auto}
+#signature-card-dissolve .connect .ns-actions,#signature-card-dissolve .product .ns-actions{display:flex}
+#signature-card-dissolve .ns-actions button,#signature-card-dissolve .ns-actions a{display:inline-flex;align-items:center;justify-content:center;min-height:46px;border:1px solid #ddd0b832;border-radius:12px;background:transparent;padding:12px 16px;font-size:14px;letter-spacing:0;text-decoration:none}
+#signature-card-dissolve .ns-actions #ns-primary,#signature-card-dissolve .ns-actions #ns-business{background:#e7dbc5;color:#161716;border-color:#e7dbc5}
+#signature-card-dissolve .ns-actions #ns-business{display:none}
+#signature-card-dissolve .product .ns-actions #ns-business{display:inline-flex}
+#signature-card-dissolve .product .ns-actions button{display:none}
+#signature-card-dissolve .ns-contact-links{display:none;pointer-events:auto;margin-top:12px;font-size:13px;line-height:1.6;color:#bbb7ae}
+#signature-card-dissolve .connect .ns-contact-links{display:block}
+#signature-card-dissolve .ns-contact-links a{display:block;color:#d8c7ab;text-decoration:none;min-height:36px;padding:7px 0}
+#signature-card-dissolve .ns-contact-links small{font-size:12px}
+#signature-card-dissolve .ns-copy.product{top:446px}
+#signature-card-dissolve .ns-copy.product h1{font-size:49px;max-width:330px}
+#signature-card-dissolve .ns-copy.product .ns-desc{font-size:15px;max-width:290px}
+#signature-card-dissolve .ns-scroll-hint{position:absolute;bottom:28px;left:28px;right:28px;display:flex;align-items:center;justify-content:space-between;z-index:1;font-size:11px;letter-spacing:1px;color:#b9a88c;pointer-events:none}
+#signature-card-dissolve .ns-scroll-hint span:last-child{font-size:19px}
+#signature-card-dissolve .ns-loader{position:absolute;top:30%;left:50%;transform:translate(-50%,-50%);font-size:13px;color:#cbb899;z-index:4}
+#signature-card-dissolve .ns-page{background:#080a0e;height:740px;overflow-y:auto;padding:28px;color:#e6dfd4}
+#signature-card-dissolve .ns-page button{background:transparent;color:#e8dfd0;border:1px solid #ffffff30;border-radius:25px;padding:12px 20px;min-height:44px;font-size:14px}
+#signature-card-dissolve .ns-page h2{font:400 46px/1.1 'Italiana',Georgia,serif;margin:40px 0 22px}
+#signature-card-dissolve .ns-page p{font-size:15px;line-height:1.7;color:#c8c3bb}
+#signature-card-dissolve .ns-page a{display:block;font-size:18px;line-height:1.6;color:#e2c8a2;text-decoration:none;padding:15px 0;overflow-wrap:anywhere}
+#signature-card-dissolve .ns-project{padding:25px 0;border-top:1px solid #ffffff20}
+#signature-card-dissolve .ns-project h3{font-size:21px;font-weight:400;margin:0 0 10px}
+#signature-card-dissolve .ns-page small{font-size:12px;color:#b8afa2}
+#signature-card-dissolve .ns-feedback{padding:16px;background:#11151b;font-size:13px;color:#dcd3c9}
+@media(max-width:350px){#signature-card-dissolve .ns-copy{left:22px;right:22px}#signature-card-dissolve h1{font-size:47px}#signature-card-dissolve .ns-copy.product h1{font-size:44px}#signature-card-dissolve .ns-copy.intro .ns-desc{width:270px}}
+
+#signature-card-dissolve{color:#e7e4df}
+#signature-card-dissolve .ns-scroll-hint{display:none}
+#signature-card-dissolve .ns-copy{top:423px}
+#signature-card-dissolve .ns-copy.intro{top:62px;text-align:center}
+#signature-card-dissolve .ns-copy.intro h1{font-family:'Outfit',Arial,sans-serif;font-size:43px;line-height:1.08;letter-spacing:-1.6px;font-weight:400;color:#eee9df;margin:0 0 15px}
+#signature-card-dissolve .ns-copy.intro .ns-desc{margin:0 auto;width:280px;height:30px;color:#d3cdc3;font-size:19px;letter-spacing:.2px}
+#signature-card-dissolve .ns-tagline{position:absolute;left:28px;right:28px;top:555px;text-align:center;margin:0;font:400 37px/1.14 'Italiana',Georgia,serif;letter-spacing:-.5px;color:#d0c3ad;pointer-events:none;z-index:1;opacity:var(--tagline-alpha,1);transform:translateY(var(--tagline-offset,0px))}
+#signature-card-dissolve .ns-copy.socials h1,#signature-card-dissolve .ns-copy.connect h1{font:400 35px/1.15 'Outfit',Arial,sans-serif;letter-spacing:-1.2px;color:#e8e4dc;margin:0 0 19px}
+#signature-card-dissolve .ns-copy.socials .ns-desc{display:none}
+#signature-card-dissolve .ns-socials{gap:0 20px;margin-top:20px}
+#signature-card-dissolve .ns-socials a{display:flex;align-items:center;text-decoration:none;min-height:62px;padding:15px 0;gap:10px;background:transparent;border:0;border-bottom:1px solid #ffffff20;border-radius:0;color:#d1cec7}
+#signature-card-dissolve .ns-socials a span{font-size:13px;color:inherit;flex:1}
+#signature-card-dissolve .ns-socials a svg{width:19px;height:19px;flex-shrink:0;stroke-width:1.6}
+#signature-card-dissolve .ns-socials a svg:last-child{width:13px;height:13px;opacity:.45}
+#signature-card-dissolve .ns-copy.connect .ns-desc{height:34px;width:280px}
+#signature-card-dissolve .ns-copy.connect .ns-actions{margin-top:16px;gap:10px;flex-wrap:nowrap;transform:translateY(var(--contact-lift,0px))}
+#signature-card-dissolve .ns-actions #ns-primary,#signature-card-dissolve .ns-actions #ns-contact,#signature-card-dissolve .ns-actions #ns-business{background:transparent;color:#dedbd4;border:1px solid #ffffff29;border-radius:10px;min-height:48px;gap:9px;transition:background .2s,color .2s,border-color .2s}
+#signature-card-dissolve .connect .ns-actions button{flex:1;padding:12px 11px;font-size:13px}
+#signature-card-dissolve .ns-actions svg{width:16px;height:16px;stroke-width:1.6;flex-shrink:0}
+#signature-card-dissolve .ns-actions button svg:last-child{margin-left:auto;width:13px;height:13px;transition:transform .2s}
+#signature-card-dissolve .ns-actions button[aria-expanded="true"],#signature-card-dissolve .ns-actions a:focus-visible{background:#e2d5bc!important;color:#171a1c!important;border-color:#e2d5bc!important}
+#signature-card-dissolve .ns-actions button[aria-expanded="true"] svg:last-child{transform:rotate(45deg)}
+#signature-card-dissolve .ns-inline-details{display:none;pointer-events:auto;margin-top:12px;transform:translateY(var(--contact-lift,0px));font-size:13px;line-height:1.5}
+#signature-card-dissolve .connect .ns-inline-details{display:block}
+#signature-card-dissolve .ns-inline-details section{border-top:1px solid #ffffff1c;padding-top:6px}
+#signature-card-dissolve .ns-inline-details a,#signature-card-dissolve .ns-inline-details p{display:flex;gap:10px;align-items:center;min-height:40px;margin:0;text-decoration:none;color:#c9c5bc;overflow-wrap:anywhere}
+#signature-card-dissolve .ns-inline-details p{font-size:12px;color:#a5a29a}
+#signature-card-dissolve .ns-inline-details svg{width:15px;height:15px;stroke-width:1.5;flex-shrink:0;color:#aaa597}
+#signature-card-dissolve .ns-inline-details a svg:last-child{margin-left:auto;width:12px;height:12px}
+#signature-card-dissolve .ns-detail-heading,#signature-card-dissolve .ns-project-line{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 0;color:#d7d3cb}
+#signature-card-dissolve .ns-detail-heading{font-size:11px;color:#a9a398}
+#signature-card-dissolve .ns-project-line+.ns-project-line{border-top:1px solid #ffffff10}
+#signature-card-dissolve .ns-inline-details small{font-size:11px;color:#9f9b92}
+#signature-card-dissolve .ns-copy.product .ns-actions{margin-top:22px}
+@media(hover:hover){#signature-card-dissolve .ns-actions button:hover,#signature-card-dissolve .ns-actions a:hover{background:#e2d5bc!important;color:#171a1c!important;border-color:#e2d5bc!important}#signature-card-dissolve .ns-socials a:hover{color:#e8d4b0;border-color:#e8d4b077}#signature-card-dissolve .ns-inline-details a:hover{color:#f4e5ca}}
+@media(max-width:350px){#signature-card-dissolve .ns-copy.intro h1{font-size:39px}#signature-card-dissolve .ns-copy.intro .ns-desc{width:255px}#signature-card-dissolve .ns-copy.connect h1{font-size:33px}#signature-card-dissolve .ns-socials{column-gap:14px}#signature-card-dissolve .ns-socials a{gap:7px}}
+@media(prefers-reduced-motion:reduce){#signature-card-dissolve .ns-actions *{transition:none!important}}
+
+
+@media (max-height: 760px) {
+  #signature-card-dissolve .ns-scroller,
+  #signature-card-dissolve .ns-stage,
+  #signature-card-dissolve .ns-page { height: max(520px, calc(100dvh - 24px)); }
+  #signature-card-dissolve .ns-track { height: 500dvh; margin-top: calc(-1 * max(520px, 100dvh - 24px)); }
+  #signature-card-dissolve .ns-copy { top: clamp(260px, 48dvh, 345px); }
+  #signature-card-dissolve .ns-copy.intro { top: clamp(35px, 8dvh, 62px); }
+  #signature-card-dissolve .ns-copy.product { top: clamp(275px, 51dvh, 380px); }
+  #signature-card-dissolve .ns-tagline { top: 73dvh; }
+}
