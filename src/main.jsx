@@ -89,7 +89,7 @@ function App() {
             <div className="ns-actions">
               <DetailButton kind="work" icon={Code2} active={detail === 'work'} onSelect={setDetail}>My work</DetailButton>
               <DetailButton kind="contact" icon={Contact} active={detail === 'contact'} onSelect={setDetail}>Contact</DetailButton>
-              <a id="ns-business" href="https://leon.omnexis.systems/dampitag#products" target="_blank" rel="noopener noreferrer">Want one? Visit Dampitag <ArrowUpRight aria-hidden="true" /></a>
+              <a id="ns-business" href="https://dampitag.com/" target="_blank" rel="noopener noreferrer">Want one? Visit Dampitag <ArrowUpRight aria-hidden="true" /></a>
             </div>
 
             <div className="ns-inline-details">
