@@ -1,0 +1,11 @@
+.social-panel{inset:0;pointer-events:none;touch-action:pan-y;user-select:none}
+.social-arrow{position:absolute;top:48%;transform:translateY(-50%);display:grid;place-items:center;min-width:48px;min-height:48px;background:none;border:0;color:#b9bdc7;cursor:pointer;pointer-events:auto;padding:10px}
+.social-arrow svg{stroke-width:1;transition:transform .25s}
+.arrow-left{left:8px}.arrow-right{right:8px}.arrow-left:hover svg{transform:translateX(-4px)}.arrow-right:hover svg{transform:translateX(4px)}
+.social-names{position:absolute;bottom:19%;left:35px;right:35px;display:flex;align-items:center;justify-content:center;gap:20px;pointer-events:auto}
+.social-names button{font:inherit;font-size:10px;min-height:48px;background:none;border:0;color:#666b75;cursor:pointer;padding:5px}
+.social-names .selected-name{font-family:ui-monospace,Consolas,monospace;font-size:13px;color:#f1f2f5;display:flex;gap:14px;align-items:center;justify-content:center;min-height:48px;padding:5px;min-width:130px}
+.selected-name strong{font-weight:400}.selected-name span{font-size:17px;color:#bac0cd}
+.social-names .adjacent-name:hover{color:#ddd}
+@media(min-width:761px){.arrow-left{left:calc(50% - 260px)}.arrow-right{right:calc(50% - 260px)}.social-names{gap:42px}.social-names button{font-size:12px}}
+@media(max-width:350px){.social-names{left:20px;right:20px;gap:12px}.social-names .selected-name{min-width:115px;font-size:12px}.social-names button{font-size:9px}}

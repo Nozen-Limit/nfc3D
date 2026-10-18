@@ -1,0 +1,6 @@
+.intro-copy{top:7%;left:8%;right:auto;text-align:left;max-width:84%}
+.intro-copy h1{font-size:36px;font-weight:500;letter-spacing:-1.6px;margin:0 0 10px}
+.intro-copy p{font-family:ui-monospace,Consolas,monospace;font-size:12px;letter-spacing:0;color:#aaa}
+.scroll-hint{bottom:7%;left:8%;right:auto;font-family:ui-monospace,Consolas,monospace;font-size:10px;letter-spacing:0}
+@media(min-width:761px){.intro-copy{top:7%;left:6%}.intro-copy h1{font-size:46px}.intro-copy p{font-size:13px}.scroll-hint{left:6%}}
+@media(max-width:350px){.intro-copy h1{font-size:32px}}

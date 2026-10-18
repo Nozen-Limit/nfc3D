@@ -1,119 +1,31 @@
 import { useEffect, useRef, useState } from 'react'
 import { createRoot } from 'react-dom/client'
-import {
-  ArrowUpRight,
-  Code2,
-  Contact,
-  Facebook,
-  Github,
-  Instagram,
-  Linkedin,
-  Mail,
-  MapPin,
-  Phone,
-  Plus,
-} from 'lucide-react'
-import './styles.css'
+import { Linkedin, Github, Instagram, Facebook } from 'lucide-react'
+import './stage.css'
+import './social-controls.css'
+import './landing-environment.css'
 
-const socials = [
-  { label: 'Facebook', href: 'https://www.facebook.com/tomjerald.ferrer.7/', Icon: Facebook },
-  { label: 'Instagram', href: 'https://www.instagram.com/frrrtom/', Icon: Instagram },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/tom-jerald-ferrer-6b7b37301/', Icon: Linkedin },
-  { label: 'GitHub', href: 'https://github.com/Nozen-Limit', Icon: Github },
-]
-
-const phases = [
-  { title: <>Tom Jerald<br />Ferrer.</>, description: 'Aspiring developer', className: 'intro' },
-  { title: 'Find me online.', description: '', className: 'socials' },
-  { title: 'Let’s connect.', description: '0997 243 3478', className: 'connect' },
-  { title: <>Connection<br />is wealth.</>, description: 'One tap. A new connection. Make your introduction with Dampitag.', className: 'product' },
-]
-
-function DetailButton({ kind, icon: Icon, children, active, onSelect }) {
-  return (
-    <button
-      type="button"
-      id={kind === 'work' ? 'ns-primary' : 'ns-contact'}
-      className="cursor-interaction"
-      aria-expanded={active}
-      aria-controls={`ns-${kind}-detail`}
-      onClick={() => onSelect(active ? null : kind)}
-      onMouseEnter={() => onSelect(kind)}
-      onFocus={(event) => {
-        if (event.currentTarget.matches(':focus-visible')) onSelect(kind)
-      }}
-    >
-      <Icon aria-hidden="true" />{children}<Plus aria-hidden="true" />
-    </button>
-  )
+const socials=[{id:'linkedin',name:'LinkedIn',Icon:Linkedin,url:'https://www.linkedin.com/in/tom-jerald-ferrer-6b7b37301/'},{id:'github',name:'GitHub',Icon:Github,url:'https://github.com/Nozen-Limit'},{id:'instagram',name:'Instagram',Icon:Instagram,url:'https://www.instagram.com/frrrtom/'},{id:'facebook',name:'Facebook',Icon:Facebook,url:'https://www.facebook.com/tomjerald.ferrer.7/'}]
+function App(){
+ const canvas=useRef(null),controller=useRef(null),swipe=useRef(null),suppressClick=useRef(false)
+ const [platform,setPlatform]=useState('linkedin'),[progress,setProgress]=useState(0)
+ useEffect(()=>{let disposed=false;import('./resume-scene.js').then(({mountResumeScene})=>{if(!disposed)try{controller.current=mountResumeScene(canvas.current)}catch{}});const onScroll=()=>setProgress(Math.min(1,window.scrollY/(innerHeight*.8)));window.addEventListener('scroll',onScroll,{passive:true});onScroll();if(window.location.hash==='#socials')requestAnimationFrame(()=>window.scrollTo(0,innerHeight*.95));return()=>{disposed=true;controller.current?.dispose();window.removeEventListener('scroll',onScroll)}},[])
+ useEffect(()=>{controller.current?.setPlatform(platform)},[platform])
+ const selected=socials.find(s=>s.id===platform),showSocials=progress>.5
+ const current=socials.findIndex(s=>s.id===platform),previous=socials[(current+3)%4],next=socials[(current+1)%4]
+ function change(direction){setPlatform(socials[(current+direction+4)%4].id)}
+ function startSwipe(e){if(e.isPrimary===false||e.button>0)return;suppressClick.current=false;swipe.current={x:e.clientX,y:e.clientY}}
+ function endSwipe(e){const start=swipe.current;swipe.current=null;if(!start)return;const dx=e.clientX-start.x,dy=e.clientY-start.y;if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy)*1.3){suppressClick.current=true;change(dx<0?1:-1)}}
+ return <main aria-label="Tom Ferrer">
+  <div className="logo-sources" aria-hidden="true">{socials.map(({id,Icon})=><Icon key={id} data-logo={id} size={256} strokeWidth={1.3}/>)}</div>
+  <div className="story"><div className="viewport">
+   <canvas ref={canvas} aria-label="Galaxy particles forming social platform logos"/>
+   <header className="intro-copy" style={{opacity:Math.max(0,1-progress*2),transform:`translateY(${-progress*25}px)`}} aria-hidden={showSocials}><h1>Tom Ferrer</h1><p>— Developer</p></header>
+   <span className="scroll-hint" style={{opacity:Math.max(0,1-progress*3)}} aria-hidden="true">Scroll ↓</span>
+   <section id="socials" className="social-panel" aria-label="Social profiles. Swipe left or right to switch platforms." aria-roledescription="carousel" tabIndex={showSocials?0:-1} style={{opacity:Math.max(0,(progress-.5)*2),pointerEvents:showSocials?'auto':'none'}} inert={!showSocials} onPointerDown={startSwipe} onPointerUp={endSwipe} onPointerCancel={()=>{swipe.current=null}} onClickCapture={e=>{if(suppressClick.current){e.preventDefault();e.stopPropagation();suppressClick.current=false}}} onKeyDown={e=>{if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();change(e.key==='ArrowLeft'?-1:1)}}}>
+    <div className="social-names"><button className="adjacent-name" onClick={()=>change(-1)}>{previous.name}</button><a className="selected-name" href={selected.url} target="_blank" rel="noopener noreferrer" aria-label={`Visit my ${selected.name} profile`}><span aria-hidden="true">⌜</span><strong aria-live="polite">{selected.name}</strong><span aria-hidden="true">⌟</span></a><button className="adjacent-name" onClick={()=>change(1)}>{next.name}</button></div>
+   </section>
+  </div></div>
+ </main>
 }
-
-function App() {
-  const rootRef = useRef(null)
-  const [phase, setPhase] = useState(0)
-  const [detail, setDetail] = useState(null)
-
-  useEffect(() => {
-    let disposed = false
-    let cleanup
-    import('./scene.js').then(({ mountCardScene }) => {
-      if (!disposed) cleanup = mountCardScene(rootRef.current, setPhase)
-    }).catch(() => {
-      const loader = rootRef.current?.querySelector('.ns-loader')
-      if (loader) loader.textContent = 'The 3D card could not load. Please refresh the page.'
-    })
-    return () => { disposed = true; cleanup?.() }
-  }, [])
-  useEffect(() => setDetail(null), [phase])
-
-  const current = phases[phase]
-  return (
-    <main id="signature-card-dissolve" ref={rootRef} aria-label="Tom Jerald Ferrer NFC portfolio">
-      <div className="ns-scroller" role="region" aria-label="Scroll to explore the NFC card">
-        <section className="ns-stage">
-          <canvas aria-label="Interactive three-dimensional NFC card. Drag in any direction to rotate." />
-          <div className="ns-grid" aria-hidden="true"><span /><span /><span /><span /><span /></div>
-
-          <div className={`ns-copy ${current.className}`}>
-            <h1>{current.title}</h1>
-            <p className="ns-desc">{current.description}</p>
-
-            <div className="ns-socials" aria-label="Social profiles">
-              {socials.map(({ label, href, Icon }) => (
-                <a className="cursor-interaction" key={label} href={href} target="_blank" rel="noopener noreferrer">
-                  <Icon aria-hidden="true" /><span>{label}</span><ArrowUpRight aria-hidden="true" />
-                </a>
-              ))}
-            </div>
-
-            <div className="ns-actions">
-              <DetailButton kind="work" icon={Code2} active={detail === 'work'} onSelect={setDetail}>My work</DetailButton>
-              <DetailButton kind="contact" icon={Contact} active={detail === 'contact'} onSelect={setDetail}>Contact</DetailButton>
-              <a id="ns-business" href="https://dampitag.com/" target="_blank" rel="noopener noreferrer">Want one? Visit Dampitag <ArrowUpRight aria-hidden="true" /></a>
-            </div>
-
-            <div className="ns-inline-details">
-              <section id="ns-work-detail" hidden={detail !== 'work'} aria-label="My work">
-                <div className="ns-detail-heading">Selected work <small>Sample projects</small></div>
-                <div className="ns-project-line"><span>Personal portfolio</span><small>Web design</small></div>
-                <div className="ns-project-line"><span>Student task tracker</span><small>Development</small></div>
-              </section>
-              <section id="ns-contact-detail" hidden={detail !== 'contact'} aria-label="Contact details">
-                <a href="tel:+639972433478"><Phone aria-hidden="true" />0997 243 3478<ArrowUpRight aria-hidden="true" /></a>
-                <a href="mailto:Tomjeraldsf@gmail.com"><Mail aria-hidden="true" />Tomjeraldsf@gmail.com<ArrowUpRight aria-hidden="true" /></a>
-                <p><MapPin aria-hidden="true" />Cabanatuan City, Nueva Ecija</p>
-              </section>
-            </div>
-          </div>
-
-          <p className="ns-tagline">Building systems<br />that last.</p>
-          <div className="ns-card-hit" aria-hidden="true" />
-          <div className="ns-loader" role="status">Preparing the 3D card…</div>
-        </section>
-        <div className="ns-track" aria-hidden="true" />
-      </div>
-    </main>
-  )
-}
-
-createRoot(document.getElementById('root')).render(<App />)
+createRoot(document.getElementById('root')).render(<App/> )
